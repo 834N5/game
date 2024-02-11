@@ -20,3 +20,7 @@ func _process(_delta):
 		reScale = viewportWidth / $".".texture.get_size().x
 	$".".set_position(Vector2(viewportWidth/2, viewportHeight/2))
 	$".".set_scale(Vector2(reScale, reScale))
+
+
+func _on_start_pressed():
+	pass # Replace with function body.

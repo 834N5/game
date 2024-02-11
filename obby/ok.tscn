@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu67umh4gsbwf"]
+[gd_scene load_steps=18 format=3 uid="uid://cu67umh4gsbwf"]
 
 [ext_resource type="Script" path="res://obby/pause.gd" id="1_3yd1p"]
 [ext_resource type="Script" path="res://obby/playerController.gd" id="1_ya3ju"]
 [ext_resource type="Script" path="res://obby/obby.gd" id="2_uail4"]
 [ext_resource type="Material" uid="uid://dvuxjt6epjk76" path="res://obby/glow.tres" id="3_gtvw8"]
+[ext_resource type="Script" path="res://obby/pause-menu.gd" id="5_6iprq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_q804a"]
 
@@ -160,3 +161,61 @@ process_mode = 1
 transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 1.28028e-08, -1, -3.09086e-08, 0, 0, 0)
 visible = false
 shadow_enabled = true
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="buttons" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+script = ExtResource("5_6iprq")
+
+[node name="resume" type="Button" parent="PauseMenu/CenterContainer/buttons"]
+layout_mode = 2
+text = "Resume"
+
+[node name="restart" type="Button" parent="PauseMenu/CenterContainer/buttons"]
+layout_mode = 2
+text = "Restart"
+
+[node name="exit" type="Button" parent="PauseMenu/CenterContainer/buttons"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "realy cool game v0.2"
+
+[connection signal="pressed" from="PauseMenu/CenterContainer/buttons/resume" to="PauseMenu/CenterContainer/buttons" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/buttons/restart" to="PauseMenu/CenterContainer/buttons" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/buttons/exit" to="PauseMenu/CenterContainer/buttons" method="_on_quit_pressed"]

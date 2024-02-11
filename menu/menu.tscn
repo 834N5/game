@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://okgvowx118sk" path="res://submarine.png" id="1_mehs8"]
 [ext_resource type="Script" path="res://menu/background-image.gd" id="2_2ic17"]
-[ext_resource type="Script" path="res://menu/menu.gd" id="3_iv1cb"]
+[ext_resource type="Script" path="res://menu/main-menu.gd" id="3_iv1cb"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,38 +12,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_mehs8")
 script = ExtResource("2_2ic17")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.5
-offset_right = 100.0
-offset_bottom = 50.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="buttons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
 script = ExtResource("3_iv1cb")
 
-[node name="start" type="Button" parent="VBoxContainer"]
+[node name="start" type="Button" parent="CenterContainer/buttons"]
 layout_mode = 2
 text = "Start"
 
-[node name="settings" type="Button" parent="VBoxContainer"]
+[node name="settings" type="Button" parent="CenterContainer/buttons"]
 layout_mode = 2
 text = "Settings"
 
-[node name="quit" type="Button" parent="VBoxContainer"]
+[node name="quit" type="Button" parent="CenterContainer/buttons"]
 layout_mode = 2
-text = "Exit"
+text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/start" to="VBoxContainer" method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit" to="VBoxContainer" method="_on_quit_pressed"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "realy cool game v0.2"
+
+[connection signal="pressed" from="CenterContainer/buttons/start" to="CenterContainer/buttons" method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/buttons/settings" to="CenterContainer/buttons" method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/buttons/quit" to="CenterContainer/buttons" method="_on_quit_pressed"]
