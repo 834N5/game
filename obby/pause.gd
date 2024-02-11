@@ -6,7 +6,7 @@ func _ready():
 	pass
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("escape"):
 		print(Input.mouse_mode)
 		if get_tree().paused:
@@ -17,5 +17,5 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
